@@ -109,7 +109,7 @@
 
 
 
-<?php require "functions/addIncoming.php"; ?>
+<?php require "functions/addIncoming.html"; ?>
 
 </body>
 </html>
