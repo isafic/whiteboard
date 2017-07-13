@@ -4,7 +4,7 @@
 
 The software is web-based so you will need an Apache server as well as access to a MySQL Database. 
 
-Currently, there is no user-registration/account system to anyone accessing the website will be seeing the same data. 
+Currently, there is no user-registration/account system to anyone accessing the website will be seeing the same data. Unforuntately I don't have a web server so I cannot demo it for you.
 
 ### Explanation of features:
 
