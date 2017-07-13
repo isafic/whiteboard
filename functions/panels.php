@@ -70,7 +70,7 @@ function drawIncomingBox($ident) {
 							      
 								        <input class="form-control input-lg" id="editIncomingTitle$ident" type="text" value="$viewTitle" placeholder="Enter title.">
 								        <br>
-								        <textarea class="form-control" rows="5" id="editIncomingDesc$ident" placeholder="Enter description">$viewDescription</textarea>
+								        <textarea class="form-control" rows="5" id="editIncomingDesc$ident" placeholder="Enter description" autofocus>$viewDescription</textarea>
 								
 							        </div>
 
@@ -205,7 +205,7 @@ function drawWaitingBox($ident) {
 							      
 								        <input class="form-control input-lg" id="editIncomingTitle$ident" type="text" value="$viewTitle" placeholder="Enter title.">
 								        <br>
-								        <textarea class="form-control" rows="5" id="editIncomingDesc$ident" placeholder="Enter description">$viewDescription</textarea>
+								        <textarea class="form-control" rows="5" id="editIncomingDesc$ident" placeholder="Enter description" autofocus>$viewDescription</textarea>
 								
 							        </div>
 
@@ -341,7 +341,7 @@ function drawOngoingBox($ident) {
 							      
 								        <input class="form-control input-lg" id="editIncomingTitle$ident" type="text" value="$viewTitle" placeholder="Enter title.">
 								        <br>
-								        <textarea class="form-control" rows="5" id="editIncomingDesc$ident" placeholder="Enter description">$viewDescription</textarea>
+								        <textarea class="form-control" rows="5" id="editIncomingDesc$ident" placeholder="Enter description" autofocus>$viewDescription</textarea>
 								
 							        </div>
 
