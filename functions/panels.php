@@ -68,7 +68,7 @@ function drawIncomingBox($ident) {
 			      					<form method="post" name="editIncomingForm$ident"> <!-- action="form-handling.php" -->
 							        <div class="modal-body">
 							      
-								        <input class="form-control input-lg" id="editIncomingTitle$ident" type="text" value="$viewTitle" placeholder="Enter title.">
+								        <input class="form-control input-lg" id="editIncomingTitle$ident" type="text" value="$viewTitle" placeholder="Enter title." autofocus>
 								        <br>
 								        <textarea class="form-control" rows="5" id="editIncomingDesc$ident" placeholder="Enter description">$viewDescription</textarea>
 								
@@ -203,7 +203,7 @@ function drawWaitingBox($ident) {
 			      					<form method="post" name="editIncomingForm$ident"> <!-- action="form-handling.php" -->
 							        <div class="modal-body">
 							      
-								        <input class="form-control input-lg" id="editIncomingTitle$ident" type="text" value="$viewTitle" placeholder="Enter title.">
+								        <input class="form-control input-lg" id="editIncomingTitle$ident" type="text" value="$viewTitle" placeholder="Enter title." autofocus>
 								        <br>
 								        <textarea class="form-control" rows="5" id="editIncomingDesc$ident" placeholder="Enter description">$viewDescription</textarea>
 								
@@ -339,7 +339,7 @@ function drawOngoingBox($ident) {
 			      					<form method="post" name="editIncomingForm$ident"> <!-- action="form-handling.php" -->
 							        <div class="modal-body">
 							      
-								        <input class="form-control input-lg" id="editIncomingTitle$ident" type="text" value="$viewTitle" placeholder="Enter title.">
+								        <input class="form-control input-lg" id="editIncomingTitle$ident" type="text" value="$viewTitle" placeholder="Enter title." autofocus>
 								        <br>
 								        <textarea class="form-control" rows="5" id="editIncomingDesc$ident" placeholder="Enter description">$viewDescription</textarea>
 								
