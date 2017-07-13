@@ -1,6 +1,6 @@
 # WHITEBOARD
 
-##### A simple tool for managing tasks that you have to do, like a to-do list.
+##### A web-app for managing projects and ideas, built for both teams and individuals.
 
 The software is web-based so you will need an Apache server as well as access to a MySQL Database. 
 
