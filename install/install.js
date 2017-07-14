@@ -12,13 +12,27 @@ function checkInput(){
 	if ((host != "") && (user != "") && (pass != "") && (db != "")){
 		button.removeAttribute("disabled");
 		document.getElementById("submitButton").classList.remove('disabled');
-		console.log("enable button")
 	} else {
 		button.setAttributeNode(document.createAttribute("disabled"));
-		console.log("disable button");
 		document.getElementById("submitButton").classList.add('disabled');
 	}
 }
+
+function submitLogin() {
+	var host = $("#host").val();
+	var user = $("#user").val();
+	var pass = $("#pass").val();
+	button.setAttributeNode(document.createAttribute("disabled"));
+	document.getElementById("submitButton").classList.add('disabled');
+	var db = $("#db").val();
+	$.post("install.php", { host: host, user: user, pass: pass, db: db}, function(response) {
+		$("#resultDisplay").html(response);
+		console.log(response)
+		button.removeAttribute("disabled");
+		document.getElementById("submitButton").classList.remove('disabled');
+	}
+	);
+} 
 
 
 

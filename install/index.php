@@ -1,3 +1,18 @@
+<?php
+// Start the session
+session_start();
+if (isset($_SESSION['host'])){
+	$host = $_SESSION['host'];
+	$user = $_SESSION['user'];
+	$pass = $_SESSION['pass'];
+	$db = $_SESSION['db'];
+} else {
+	$host = "";
+	$user = "";
+	$pass = "";
+	$db = "";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +25,12 @@
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="../functions/interactWithDatabase.js"></script>
 	<script src="install.js"></script>
+
 </head>
 <body>
 <div class="container">
 	<div class="page-header">
-		<h1 align="center">Install Whiteboard</h1>
+		<h1 align="center">Install / Reset Whiteboard</h1>
 	</div>
 
 	<div class="row">
@@ -24,22 +40,22 @@
 		<form id = "sql-data">
 			<div class="form-group">
 			<label for="host">Host</label>
-			<input type="text" class="form-control" id="host" placeholder="localhost" onkeyup="checkInput();" autofocus>
+			<input type="text" class="form-control" id="host" placeholder="localhost" onkeyup="checkInput();" autofocus value="<?php echo htmlspecialchars($host); ?>">
 			</div>
 
 			<div class="form-group">
 			<label for="user">Username</label>
-			<input type="text" class="form-control" id="user" placeholder="root" onkeyup="checkInput();">
+			<input type="text" class="form-control" id="user" placeholder="root" onkeyup="checkInput();" value="<?php echo htmlspecialchars($user); ?>">
 			</div>
 
 			<div class="form-group">
 			<label for="pass">Password</label>
-			<input type="password" class="form-control" id="pass" placeholder="••••••••••••" onkeyup="checkInput();">
+			<input type="password" class="form-control" id="pass" placeholder="••••••••••••" onkeyup="checkInput();" value="<?php echo htmlspecialchars($pass); ?>">
 			</div>	
 
 			<div class="form-group">
 			<label for="db">Database</label>
-			<input type="text" class="form-control" id="db" placeholder="WHITEBOARD" aria-describedby="dbHelpBlock"  onkeyup="checkInput();">
+			<input type="text" class="form-control" id="db" placeholder="WHITEBOARD" aria-describedby="dbHelpBlock"  onkeyup="checkInput();" value="<?php echo htmlspecialchars($db); ?>">
 			<p id="passwordHelpBlock" class="form-text text-muted">
 				If the database does not already exist, it will be created.
 			</p>
@@ -47,11 +63,13 @@
 			
 			<div class="text-center">
 			<br>
-			<button type="button" id="submitButton" class="btn btn-success disabled btn-lg" onclick="console.log('click');" disabled="">Submit</button>
+			<button type="button" id="submitButton" class="btn btn-success disabled btn-lg" onclick="submitLogin();" disabled>Login</button>
+
 			</div>
 			</form>
+			<script type="text/javascript">checkInput();</script>
 		</div>
-		<div class="col-md-5">
+		<div class="col-md-5" id="resultDisplay">
 
 			
 		</div>
