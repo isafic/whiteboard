@@ -21,8 +21,10 @@ $loginInfo = array(
 					'pass' => $pass,
 					'db' => $db,
 					),
+				'install' => array(
+					'is_installed' => true),
 				'settings' => array(
-					'test_val' => 3,)
+					'test_val' => 4,)
 	);
 
 $configFile = dirname( dirname(__FILE__) ).'/config.ini';
