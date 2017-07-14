@@ -20,6 +20,7 @@ $loginInfo = array(
 					'user' => $user,
 					'pass' => $pass,
 					'db' => $db,
+					'install' => true
 					),
 				'settings' => array(
 					'test_val' => 3,)
