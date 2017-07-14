@@ -27,7 +27,7 @@ Currently, there is no user-registration/account system to anyone accessing the 
 **Important Note:** If you ever change your MySQL login information, you will need to re-do the installation. 
 
 ### To-do:
-* Create a more streamlined installation process
+* ~~Create a more streamlined installation process~~
 * Give entries an "owner" property
 * Add functionality for multiple "whiteboards" in the same database
 * Make whiteboards accessable by name and password
