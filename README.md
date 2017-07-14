@@ -19,16 +19,12 @@ Currently, there is no user-registration/account system to anyone accessing the 
 
 ### Installation
 1. Copy files onto your Apache server
-2. Create a MySQL database. Make sure to update the variables `$host`, `$user`, `$pass` and `$dbname` in `functions\panels.php` and `form-handling.php`.
-3. Create a table called `whiteboard_data`. If you want a different name, make sure to change `functions\panels.php` and `form-handling.php`.
-4. Done!
+2. In your browser, navigate to `/install/`.
+3. Enter your MySQL login information into the form on the page.
+4. Click "Login" and check the output on the right side of the page to ensure that everything was done correctly.
+5. Delete the `/install/` folder if you wish.
 
-### Explanation of different files:
-* `index.php` is the main webpage
-* `form-handling.php` is the backend file. this file handles all of the forms in `index.php` and is also the file that queries the database
-* `functions\addIncoming.php` contains HTML code used when the user adds new entries to the database
-* `functions\interactWithDatabase.js` contains all of the Javascript functions used by `index.php`.
-* `functions\panels.php` contains all of the PHP functions used by `index.php`
+**Important Note:** If you ever change your MySQL login information, you will need to re-do the installation. 
 
 ### To-do:
 * Create a more streamlined installation process
