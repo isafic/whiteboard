@@ -33,12 +33,12 @@ if (isset($_POST['editExisting'])){
 	$editExisting = false;
 	$confirmRemove = false;
 }
+$config = parse_ini_file('config.ini', true);
 
-
-$host = 'localhost';  
-$user = 'root';  
-$pass = 'toor';  
-$dbname = 'WHITEBOARD';  
+$host = $config['database']['host'] ;
+$user = $config['database']['user'] ;
+$pass = $config['database']['pass']  ;
+$dbname = $config['database']['db'] ;
 $conn = mysqli_connect($host, $user, $pass,$dbname); 
 if(!$conn){  
    die('Could not connect: '.mysqli_connect_error());  

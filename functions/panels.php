@@ -8,10 +8,12 @@ function debug( $data ) {
 }
 
 function fetchData(){
-    $host = 'localhost';  
-    $user = 'root';  
-    $pass = 'toor';  
-    $dbname = 'WHITEBOARD';  
+	$config = parse_ini_file(dirname( dirname(__FILE__) ).'/config.ini', true);
+
+	$host = $config['database']['host'] ;
+	$user = $config['database']['user'] ;
+	$pass = $config['database']['pass']  ;
+	$dbname = $config['database']['db'] ;
     $conn = mysqli_connect($host, $user, $pass,$dbname);
     global $entry;
     $entry = [];
