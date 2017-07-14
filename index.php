@@ -1,3 +1,14 @@
+<?php
+
+$configFile = parse_ini_file('config.ini', true);
+if ($configFile['install']['is_installed'] != "1"){
+	die("Not installed properly! Please navigate to /install/ and install the website!");
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
