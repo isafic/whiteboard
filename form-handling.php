@@ -18,6 +18,7 @@ if (isset($_POST['editExisting'])){
 	$ident = "'".$_POST['ident']."'";
 	$editIncomingTitle = "'".$_POST['editIncomingTitle']."'";
 	$editIncomingDesc = "'".$_POST['editIncomingDesc']."'";
+	$editIncomingOwner = "'".$_POST['editIncomingOwner']."'";
 	$editExisting = true;
 	$confirmRemove = false;
 } elseif (isset($_POST['confirmEditStatus'])){
@@ -30,6 +31,7 @@ if (isset($_POST['editExisting'])){
 } else {
 	$addIncomingTitle = "'".$_POST['addIncomingTitle']."'";
 	$addIncomingDesc = "'".$_POST['addIncomingDesc']."'";
+	$addIncomingOwner = "'".$_POST['addIncomingOwner']."'";
 	$editExisting = false;
 	$confirmRemove = false;
 }
@@ -48,8 +50,10 @@ echo 'Connected successfully<br/>';
 function addNewEntry(){
 	global $addIncomingTitle;
 	global $addIncomingDesc;
+	global $addIncomingOwner;
+	// echo "$addIncomingOwner";
 	global $conn;
-	$sql = 'INSERT INTO whiteboard_data (title, description, status) VALUES ('.$addIncomingTitle.', '.$addIncomingDesc.', 0)';
+	$sql = 'INSERT INTO whiteboard_data (title, description, owner, status) VALUES ('.$addIncomingTitle.', '.$addIncomingDesc.', '.$addIncomingOwner.', 0)';
 
 	if (mysqli_query($conn, $sql)){
 		echo "we did it";
@@ -62,10 +66,11 @@ function addNewEntry(){
 function editEntry(){
 	global $editIncomingTitle;
 	global $editIncomingDesc;
+	global $editIncomingOwner;
 	global $ident;
 	global $conn;
 	echo "goodie";
-	$sql = ' UPDATE whiteboard_data SET title='.$editIncomingTitle.', description='.$editIncomingDesc.' WHERE id='.$ident.' ';
+	$sql = ' UPDATE whiteboard_data SET title='.$editIncomingTitle.', description='.$editIncomingDesc.', owner='.$editIncomingOwner.' WHERE id='.$ident.' ';
 
 	if (mysqli_query($conn, $sql)){
 		echo "we did it";

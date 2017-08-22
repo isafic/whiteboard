@@ -1,13 +1,13 @@
+
 <?php 
 
 $config = parse_ini_file('config.ini', true);
 
-if ($config['database']['install'] != 1){
+if ($config['install']['is_installed'] != 1){
 	die("Please install the website first!");
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
