@@ -28,7 +28,7 @@ Currently, there is no user-registration/account system to anyone accessing the 
 
 ### To-do:
 * ~~Create a more streamlined installation process~~
-* Give entries an "owner" property
+* ~~Give entries an "owner" property~~
 * Add functionality for multiple "whiteboards" in the same database
 * Make whiteboards accessable by name and password (user accounts)
 * Markdown support
