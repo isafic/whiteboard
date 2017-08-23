@@ -6,6 +6,7 @@ $user = $_POST['user'];
 $pass = $_POST['pass'];  
 $dbname = "'".$_POST['db']."'";  
 $db = $_POST['db'];
+$lang = $_POST['lang'];
 
 $_SESSION['host'] = $host;
 $_SESSION['user'] = $user;
@@ -25,7 +26,7 @@ $loginInfo = array(
 				'install' => array(
 					'is_installed' => true),
 				'settings' => array(
-					'test_val' => 4,)
+					'lang' => $lang,)
 	);
 
 $configFile = dirname( dirname(__FILE__) ).'/config.ini';

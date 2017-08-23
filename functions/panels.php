@@ -1,4 +1,32 @@
 <?php
+$config = parse_ini_file(dirname( dirname(__FILE__) ).'/config.ini', true);
+
+if ($config['settings']['lang'] == "en") {
+	include "lang/en.php";
+} elseif ($config['settings']['lang'] == "hu") {
+	include "lang/hu.php";
+}
+
+
+
+	
+	$edit = $lang['editHeader'];
+	$enterTitle = $lang['enterTitle'];
+	$enterDesc = $lang['enterDesc'];
+	$enterOwner = $lang['enterOwner'];
+	$save = $lang['save'];
+	$cancel = $lang['cancel'];
+	$close = $lang['close'];
+	$confirm = $lang['confirm'];
+	$viewEntry = $lang['viewEntry'];
+	$removeEntry = $lang['removeEntry'];
+	$moveTo1 = $lang['moveTo1'];
+	$moveTo2 = $lang['moveTo2'];
+	$moveTo3 = $lang['moveTo3'];
+
+
+
+
 function debug( $data ) {
 	$output = $data;
 	if ( is_array( $output ) )
@@ -9,6 +37,7 @@ function debug( $data ) {
 
 function fetchData(){
 	$config = parse_ini_file(dirname( dirname(__FILE__) ).'/config.ini', true);
+
 
 	$host = $config['database']['host'] ;
 	$user = $config['database']['user'] ;
@@ -48,17 +77,40 @@ function fetchData(){
 
 function drawIncomingBox($ident) {
 	global $entry;
+	global $lang;
 
 	$viewTitle = $entry[$ident]['title'];
 	$viewDescription = $entry[$ident]['description'];
 	$viewOwner = $entry[$ident]['owner'];
+	$owner = $lang['drawOwner'] . $viewOwner;
+
+	global $viewTitle;
+	global $viewDescription;
+	global $viewOwner;
+	global $owner;
+	global $edit;
+	global $enterTitle;
+	global $enterDesc;
+	global $enterOwner;
+	global $save;
+	global $cancel;
+	global $close;
+	global $confirm;
+	global $viewEntry;
+	global $removeEntry;
+	global $moveTo1;
+	global $moveTo2;
+	global $moveTo3;
+
+
+
 
 	$incomingBox = 
 	<<<HTML
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="panel" align="center"><h4 align="center">$viewTitle</h4> 
-					<h5 align="center">Owner: $viewOwner</h5> 
+					<h5 align="center">$owner</h5> 
 					<div class="btn-group btn-group">
 						<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#editIncoming$ident"><span class="glyphicon glyphicon-pencil" ></span></p></a>
 
@@ -67,22 +119,22 @@ function drawIncomingBox($ident) {
 								<div class="modal-content"> <!-- Modal content-->
 			        				<div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">Edit</h4>
+								        <h4 class="modal-title">$edit</h4>
 			      					</div>
 			      					<form method="post" name="editIncomingForm$ident"> <!-- action="form-handling.php" -->
 							        <div class="modal-body">
 							      
-								        <input class="form-control input-lg" id="editIncomingTitle$ident" type="text" value="$viewTitle" placeholder="Enter title." autofocus>
+								        <input class="form-control input-lg" id="editIncomingTitle$ident" type="text" value="$viewTitle" placeholder="$enterTitle" autofocus>
 								        <br>
-								        <textarea class="form-control" rows="5" id="editIncomingDesc$ident" placeholder="Enter description" autofocus>$viewDescription</textarea>
-								         <input class="form-control input" id="editIncomingOwner$ident" type="text" value="$viewOwner" placeholder="Enter Owner.">
+								        <textarea class="form-control" rows="5" id="editIncomingDesc$ident" placeholder="$enterDesc" autofocus>$viewDescription</textarea>
+								         <input class="form-control input" id="editIncomingOwner$ident" type="text" value="$viewOwner" placeholder="$enterOwner">
 								
 							        </div>
 
 							        <div class="modal-footer">
-								        <button type="button" class="btn btn-success" onclick="editFormData($ident, editIncomingTitle$ident, editIncomingDesc$ident, editIncomingOwner$ident);window.location.reload();" data-dismiss="modal">Save</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
+								        <button type="button" class="btn btn-success" onclick="editFormData($ident, editIncomingTitle$ident, editIncomingDesc$ident, editIncomingOwner$ident);window.location.reload();" data-dismiss="modal">$save</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
 
-								        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">$cancel</button>
 								    </form>
 								        
 				        			</div>
@@ -98,13 +150,13 @@ function drawIncomingBox($ident) {
 								<div class="modal-content"> <!-- Modal content-->
 			        				<div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">View Entry</h4>
+								        <h4 class="modal-title">$viewEntry</h4>
 			      					</div>
 			      					
 				      				<div class="modal-body">
 				      					
 				        				<h3 align="left">$viewTitle</h3>
-				        				<h5 align="left">Owner: $viewOwner</h5>
+				        				<h5 align="left">$owner</h5>
 				        				
 				        				<p align="left">$viewDescription</p>
 				        								
@@ -113,7 +165,7 @@ function drawIncomingBox($ident) {
 				      				<div class="modal-footer">
 								       
 									
-								        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">$close</button>
 				        			</div>
 			        			</div> <!-- end of modal content -->
 			    			</div> <!-- end of mode dialogue -->
@@ -127,15 +179,15 @@ function drawIncomingBox($ident) {
 								<div class="modal-content"> <!-- Modal content-->
 			        				<div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">Remove Entry</h4>
+								        <h4 class="modal-title">$removeEntry</h4>
 			      					</div>
 			      					<form method="post" name="removeEntry$ident"> <!-- action="form-handling.php" -->
 
 
 							        <div class="modal-footer">
-								        <button type="button" class="btn btn-success" onclick="removeEntry($ident);window.location.reload();" data-dismiss="modal">Confirm</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
+								        <button type="button" class="btn btn-success" onclick="removeEntry($ident);window.location.reload();" data-dismiss="modal">$confirm</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
 
-								        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">$cancel</button>
 								    </form>
 								        
 				        			</div>
@@ -150,15 +202,15 @@ function drawIncomingBox($ident) {
 								<div class="modal-content"> <!-- Modal content-->
 			        				<div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">Move To Waiting</h4>
+								        <h4 class="modal-title">$moveTo1</h4>
 			      					</div>
 			      					<form method="post" name="editStatus$ident"> <!-- action="form-handling.php" -->
 
 
 							        <div class="modal-footer">
-								        <button type="button" class="btn btn-success" onclick="editStatus($ident);window.location.reload();" data-dismiss="modal">Confirm</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
+								        <button type="button" class="btn btn-success" onclick="editStatus($ident);window.location.reload();" data-dismiss="modal">$confirm</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
 
-								        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">$cancel</button>
 								    </form>
 								        
 				        			</div>
@@ -177,17 +229,37 @@ echo "$incomingBox";
 
 function drawWaitingBox($ident) {
 	global $entry;
+	global $lang;
 
 	$viewTitle = $entry[$ident]['title'];
 	$viewDescription = $entry[$ident]['description'];
 	$viewOwner = $entry[$ident]['owner'];
+	$owner = $lang['drawOwner'] . $viewOwner;
+	
+	global $viewTitle;
+	global $viewDescription;
+	global $viewOwner;
+	global $owner;
+	global $edit;
+	global $enterTitle;
+	global $enterDesc;
+	global $enterOwner;
+	global $save;
+	global $cancel;
+	global $close;
+	global $confirm;
+	global $viewEntry;
+	global $removeEntry;
+	global $moveTo1;
+	global $moveTo2;
+	global $moveTo3;
 
-	$incomingBox = 
+	$waitingBox = 
 	<<<HTML
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="panel" align="center"><h4 align="center">$viewTitle</h4> 
-									<h5 align="center">Owner: $viewOwner</h5> 
+									<h5 align="center">$owner</h5> 
 					<div class="btn-group btn-group">
 						<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#editIncoming$ident"><span class="glyphicon glyphicon-pencil" ></span></p></a>
 
@@ -196,7 +268,7 @@ function drawWaitingBox($ident) {
 								<div class="modal-content"> <!-- Modal content-->
 			        				<div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">Edit</h4>
+								        <h4 class="modal-title">$edit</h4>
 			      					</div>
 			      					<form method="post" name="editIncomingForm$ident"> <!-- action="form-handling.php" -->
 							        <div class="modal-body">
@@ -208,9 +280,9 @@ function drawWaitingBox($ident) {
 							        </div>
 
 							        <div class="modal-footer">
-								        <button type="button" class="btn btn-success" onclick="editFormData($ident, editIncomingTitle$ident, editIncomingDesc$ident, editIncomingOwner$ident);window.location.reload();" data-dismiss="modal">Save</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
+								        <button type="button" class="btn btn-success" onclick="editFormData($ident, editIncomingTitle$ident, editIncomingDesc$ident, editIncomingOwner$ident);window.location.reload();" data-dismiss="modal">$save</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
 
-								        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">$cancel</button>
 								    </form>
 								        
 				        			</div>
@@ -226,13 +298,13 @@ function drawWaitingBox($ident) {
 								<div class="modal-content"> <!-- Modal content-->
 			        				<div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">View Entry</h4>
+								        <h4 class="modal-title">$viewEntry</h4>
 			      					</div>
 			      					
 				      				<div class="modal-body">
 				      					
 				        				<h3 align="left">$viewTitle</h3>
-										<h5 align="left">Owner: $viewOwner</h5>
+										<h5 align="left">$owner</h5>
 				        				<p align="left">$viewDescription</p>
 				        								
 				      				</div>
@@ -240,7 +312,7 @@ function drawWaitingBox($ident) {
 				      				<div class="modal-footer">
 								       
 									
-								        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">$close</button>
 				        			</div>
 			        			</div> <!-- end of modal content -->
 			    			</div> <!-- end of mode dialogue -->
@@ -254,15 +326,15 @@ function drawWaitingBox($ident) {
 								<div class="modal-content"> <!-- Modal content-->
 			        				<div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">Remove Entry</h4>
+								        <h4 class="modal-title">$removeEntry</h4>
 			      					</div>
 			      					<form method="post" name="removeEntry$ident"> <!-- action="form-handling.php" -->
 
 
 							        <div class="modal-footer">
-								        <button type="button" class="btn btn-success" onclick="removeEntry($ident);window.location.reload();" data-dismiss="modal">Confirm</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
+								        <button type="button" class="btn btn-success" onclick="removeEntry($ident);window.location.reload();" data-dismiss="modal">$confirm</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
 
-								        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">$cancel</button>
 								    </form>
 								        
 				        			</div>
@@ -277,14 +349,14 @@ function drawWaitingBox($ident) {
 								<div class="modal-content"> <!-- Modal content-->
 			        				<div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">Move To Ongoing</h4>
+								        <h4 class="modal-title">$moveTo2</h4>
 			      					</div>
 			      					<form method="post" name="editStatus$ident"> <!-- action="form-handling.php" -->
 
 							        <div class="modal-footer">
-								        <button type="button" class="btn btn-success" onclick="editStatus($ident);window.location.reload();" data-dismiss="modal">Confirm</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
+								        <button type="button" class="btn btn-success" onclick="editStatus($ident);window.location.reload();" data-dismiss="modal">$confirm</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
 
-								        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">$cancel</button>
 								    </form>
 								        
 				        			</div>
@@ -299,21 +371,42 @@ function drawWaitingBox($ident) {
 	</div>
 			
 HTML;
-echo "$incomingBox";
+echo "$waitingBox";
 }
 
 function drawOngoingBox($ident) {
 	global $entry;
+	global $lang;
 
 	$viewTitle = $entry[$ident]['title'];
 	$viewDescription = $entry[$ident]['description'];
+	$viewOwner = $entry[$ident]['owner'];
+	$owner = $lang['drawOwner'] . $viewOwner;
+	
+	global $viewTitle;
+	global $viewDescription;
+	global $viewOwner;
+	global $owner;
+	global $edit;
+	global $enterTitle;
+	global $enterDesc;
+	global $enterOwner;
+	global $save;
+	global $cancel;
+	global $close;
+	global $confirm;
+	global $viewEntry;
+	global $removeEntry;
+	global $moveTo1;
+	global $moveTo2;
+	global $moveTo3;
 
-	$incomingBox = 
+	$ongoingBox = 
 	<<<HTML
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="panel" align="center"><h4 align="center">$viewTitle</h4> 
-								<h5 align="center">Owner: $viewOwner</h5> 
+								<h5 align="center">$owner</h5> 
 					<div class="btn-group btn-group">
 						<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#editIncoming$ident"><span class="glyphicon glyphicon-pencil" ></span></p></a>
 
@@ -322,7 +415,7 @@ function drawOngoingBox($ident) {
 								<div class="modal-content"> <!-- Modal content-->
 			        				<div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">Edit</h4>
+								        <h4 class="modal-title">$edit</h4>
 			      					</div>
 			      					<form method="post" name="editIncomingForm$ident"> <!-- action="form-handling.php" -->
 							        <div class="modal-body">
@@ -334,9 +427,9 @@ function drawOngoingBox($ident) {
 							        </div>
 
 							        <div class="modal-footer">
-								        <button type="button" class="btn btn-success" onclick="editFormData($ident, editIncomingTitle$ident, editIncomingDesc$ident, editIncomingOwner$ident);window.location.reload();" data-dismiss="modal">Save</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
+								        <button type="button" class="btn btn-success" onclick="editFormData($ident, editIncomingTitle$ident, editIncomingDesc$ident, editIncomingOwner$ident);window.location.reload();" data-dismiss="modal">$save</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
 
-								        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">$cancel</button>
 								    </form>
 								        
 				        			</div>
@@ -352,13 +445,13 @@ function drawOngoingBox($ident) {
 								<div class="modal-content"> <!-- Modal content-->
 			        				<div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">View Entry</h4>
+								        <h4 class="modal-title">$viewEntry</h4>
 			      					</div>
 			      					
 				      				<div class="modal-body">
 				      					
 				        				<h3 align="left">$viewTitle</h3>
-				        				<h5 align="left">Owner: $viewOwner</h5>
+				        				<h5 align="left">$owner</h5>
 				        				<p align="left">$viewDescription</p>
 				        								
 				      				</div>
@@ -366,7 +459,7 @@ function drawOngoingBox($ident) {
 				      				<div class="modal-footer">
 								       
 									
-								        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">$close</button>
 				        			</div>
 			        			</div> <!-- end of modal content -->
 			    			</div> <!-- end of mode dialogue -->
@@ -380,15 +473,15 @@ function drawOngoingBox($ident) {
 								<div class="modal-content"> <!-- Modal content-->
 			        				<div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">Remove Entry</h4>
+								        <h4 class="modal-title">$removeEntry</h4>
 			      					</div>
 			      					<form method="post" name="removeEntry$ident"> <!-- action="form-handling.php" -->
 
 
 							        <div class="modal-footer">
-								        <button type="button" class="btn btn-success" onclick="removeEntry($ident);window.location.reload();" data-dismiss="modal">Confirm</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
+								        <button type="button" class="btn btn-success" onclick="removeEntry($ident);window.location.reload();" data-dismiss="modal">$confirm</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
 
-								        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">$cancel</button>
 								    </form>
 								        
 				        			</div>
@@ -403,14 +496,14 @@ function drawOngoingBox($ident) {
 								<div class="modal-content"> <!-- Modal content-->
 			        				<div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">Move To Finished</h4>
+								        <h4 class="modal-title">$moveTo3</h4>
 			      					</div>
 			      					<form method="post" name="editStatus$ident"> <!-- action="form-handling.php" -->
 
 							        <div class="modal-footer">
-								        <button type="button" class="btn btn-success" onclick="editStatus($ident);window.location.reload();" data-dismiss="modal">Confirm</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
+								        <button type="button" class="btn btn-success" onclick="editStatus($ident);window.location.reload();" data-dismiss="modal">$confirm</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
 
-								        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">$cancel</button>
 								    </form>
 								        
 				        			</div>
@@ -422,24 +515,45 @@ function drawOngoingBox($ident) {
 		    	</div>	
 			</div>
 		</div>
+		</div>
 			
 HTML;
-echo "$incomingBox";
+echo "$ongoingBox";
 }
 
 function drawFinishedBox($ident) {
 	global $entry;
+	global $lang;
 
 	$viewTitle = $entry[$ident]['title'];
 	$viewDescription = $entry[$ident]['description'];
 	$viewOwner = $entry[$ident]['owner'];
+	$owner = $lang['drawOwner'] . $viewOwner;
+	
+	global $viewTitle;
+	global $viewDescription;
+	global $viewOwner;
+	global $owner;
+	global $edit;
+	global $enterTitle;
+	global $enterDesc;
+	global $enterOwner;
+	global $save;
+	global $cancel;
+	global $close;
+	global $confirm;
+	global $viewEntry;
+	global $removeEntry;
+	global $moveTo1;
+	global $moveTo2;
+	global $moveTo3;
 
-	$incomingBox = 
+	$finishedBox = 
 	<<<HTML
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="panel" align="center"><h4 align="center">$viewTitle</h4> 
-									<h5 align="center">Owner: $viewOwner</h5> 
+									<h5 align="center">$owner</h5> 
 					<div class="btn-group btn-group">
 						
 					  	<a href="#" class="btn btn-info" data-toggle="modal" data-target="#viewEntries$ident"><span class="glyphicon glyphicon-eye-open"></span></p></a>
@@ -449,13 +563,13 @@ function drawFinishedBox($ident) {
 								<div class="modal-content"> <!-- Modal content-->
 			        				<div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">View Entry</h4>
+								        <h4 class="modal-title">$viewEntry</h4>
 			      					</div>
 			      					
 				      				<div class="modal-body">
 				      					
 				        				<h3 align="left">$viewTitle</h3>
-				        				<h5 align="left">Owner: $viewOwner</h5>
+				        				<h5 align="left">$owner</h5>
 				        				<p align="left">$viewDescription</p>
 				        								
 				      				</div>
@@ -463,7 +577,7 @@ function drawFinishedBox($ident) {
 				      				<div class="modal-footer">
 								       
 									
-								        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">$close</button>
 				        			</div>
 			        			</div> <!-- end of modal content -->
 			    			</div> <!-- end of mode dialogue -->
@@ -477,20 +591,15 @@ function drawFinishedBox($ident) {
 								<div class="modal-content"> <!-- Modal content-->
 			        				<div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">Remove Entry</h4>
+								        <h4 class="modal-title">$removeEntry</h4>
 			      					</div>
 			      					<form method="post" name="removeEntry$ident"> <!-- action="form-handling.php" -->
-							        <div class="modal-body">
-							      		
-								        <input class="form-control input-lg" id="removeEntryConfirm$ident" type="text"  placeholder="Please type ' yes ' to confirm.">
-								        
-								
-							        </div>
+
 
 							        <div class="modal-footer">
-								        <button type="button" class="btn btn-success" onclick="removeEntry($ident);window.location.reload();" data-dismiss="modal">Confirm</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
+								        <button type="button" class="btn btn-success" onclick="removeEntry($ident);window.location.reload();" data-dismiss="modal">$confirm</button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
 
-								        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">$cancel</button>
 								    </form>
 								        
 				        			</div>
@@ -505,7 +614,7 @@ function drawFinishedBox($ident) {
 		</div>
 			
 HTML;
-echo "$incomingBox";
+echo "$finishedBox";
 }
 
 

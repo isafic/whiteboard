@@ -22,10 +22,12 @@ function submitLogin() {
 	var host = $("#host").val();
 	var user = $("#user").val();
 	var pass = $("#pass").val();
+	var lang = $("#lang").val();
+
 	button.setAttributeNode(document.createAttribute("disabled"));
 	document.getElementById("submitButton").classList.add('disabled');
 	var db = $("#db").val();
-	$.post("install.php", { host: host, user: user, pass: pass, db: db}, function(response) {
+	$.post("install.php", { host: host, user: user, pass: pass, db: db, lang: lang}, function(response) {
 		$("#resultDisplay").html(response);
 		console.log(response)
 		button.removeAttribute("disabled");

@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if (isset($_SESSION['host'])){
 	$host = $_SESSION['host'];
@@ -12,6 +11,8 @@ if (isset($_SESSION['host'])){
 	$pass = "";
 	$db = "";
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +39,14 @@ if (isset($_SESSION['host'])){
 		<div class="col-md-5">
 		<h3>MySQL Database Login</h3><br>
 		<form id = "sql-data">
+			<div class="form-group">
+				<label for="lang">Language</label>
+				<select id="lang" class="form-control">
+					<option value="en">English</option>
+					<option value="hu">Magyar</option>
+				</select>
+			</div>
+
 			<div class="form-group">
 			<label for="host">Host</label>
 			<input type="text" class="form-control" id="host" placeholder="localhost" onkeyup="checkInput();" autofocus value="<?php echo htmlspecialchars($host); ?>">
