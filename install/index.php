@@ -12,6 +12,17 @@ if (isset($_SESSION['host'])){
 	$db = "";
 }
 
+$configFile = dirname( dirname(__FILE__) ).'/config.ini';
+$config = parse_ini_file($configFile, true);
+
+if ($config['settings']['lang'] == "en") {
+	include dirname( dirname(__FILE__) )."/lang/en.php";
+	$LANG = "en";
+} elseif ($config['settings']['lang'] == "hu") {
+	include dirname( dirname(__FILE__) )."/lang/hu.php";
+	$LANG = "hu";
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -31,16 +42,16 @@ if (isset($_SESSION['host'])){
 <body>
 <div class="container">
 	<div class="page-header">
-		<h1 align="center">Install / Reset Whiteboard</h1>
+		<h1 align="center"><?php echo $lang['installTitle']; ?></h1>
 	</div>
 
 	<div class="row">
 		<div class="col-sm-1"></div>
 		<div class="col-md-5">
-		<h3>MySQL Database Login</h3><br>
+		<h3><?php echo $lang['loginTitle']; ?></h3><br>
 		<form id = "sql-data">
 			<div class="form-group">
-				<label for="lang">Language</label>
+				<label for="lang"><?php echo $lang['lang']; ?></label>
 				<select id="lang" class="form-control">
 					<option value="en">English</option>
 					<option value="hu">Magyar</option>
@@ -48,31 +59,31 @@ if (isset($_SESSION['host'])){
 			</div>
 
 			<div class="form-group">
-			<label for="host">Host</label>
+			<label for="host"><?php echo $lang['host']; ?></label>
 			<input type="text" class="form-control" id="host" placeholder="localhost" onkeyup="checkInput();" autofocus value="<?php echo htmlspecialchars($host); ?>">
 			</div>
 
 			<div class="form-group">
-			<label for="user">Username</label>
+			<label for="user"><?php echo $lang['username']; ?></label>
 			<input type="text" class="form-control" id="user" placeholder="root" onkeyup="checkInput();" value="<?php echo htmlspecialchars($user); ?>">
 			</div>
 
 			<div class="form-group">
-			<label for="pass">Password</label>
+			<label for="pass"><?php echo $lang['password']; ?></label>
 			<input type="password" class="form-control" id="pass" placeholder="••••••••••••" onkeyup="checkInput();" value="<?php echo htmlspecialchars($pass); ?>">
 			</div>	
 
 			<div class="form-group">
-			<label for="db">Database</label>
+			<label for="db"><?php echo $lang['database']; ?></label>
 			<input type="text" class="form-control" id="db" placeholder="WHITEBOARD" aria-describedby="dbHelpBlock"  onkeyup="checkInput();" value="<?php echo htmlspecialchars($db); ?>">
 			<p id="passwordHelpBlock" class="form-text text-muted">
-				If the database does not already exist, it will be created.
+				<?php echo $lang['ifDb']; ?>
 			</p>
 			</div>		
 			
 			<div class="text-center">
 			<br>
-			<button type="button" id="submitButton" class="btn btn-success disabled btn-lg" onclick="submitLogin();" disabled>Login</button>
+			<button type="button" id="submitButton" class="btn btn-success disabled btn-lg" onclick="submitLogin();" disabled><?php echo $lang['login']; ?></button>
 
 			</div>
 			</form>

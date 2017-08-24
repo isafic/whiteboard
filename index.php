@@ -11,7 +11,7 @@ if ($config['settings']['lang'] == "en") {
 
 
 if ($config['install']['is_installed'] != 1){
-	die("Please install the website first!");
+	die($lang['pleaseInstall']);
 }
 
 ?>
@@ -37,7 +37,18 @@ if ($config['install']['is_installed'] != 1){
 
 	<div class="container">
 		<div class="page-header">
-			<h1 align="center"><?php echo $lang['title'];?></h1>
+
+
+
+
+			<!-- <h1 align="center"><?php echo $lang['title'];?></h1>  -->
+			<div class="panel-heading" align="center">
+		  			<div class="btn">
+		  				<h1><?php echo $lang['title'];?></h1>
+		  			</div> 
+		  			<a type="button" class="btn btn-primary btn-sm" href="./settings"><span class="glyphicon glyphicon-cog"></span></a>
+		  		</div>
+
 		</div>
 
 		<div class="row">
