@@ -45,7 +45,7 @@ $uninstall = $lang['uninstall'];
 		<form id = "settings">
 			<div class="form-group">
 				<label for="lang"><?php echo $language; ?></label>
-				<select id="lang" class="form-control">
+				<select id="lang" class="form-control" onchange="changeLang();">
 					<option value="en" <?php if ($LANG == "en") { echo 'selected = "selected"'; } ?> >English</option>
 					<option value="hu" <?php if ($LANG == "hu") { echo 'selected = "selected"'; } ?>>Magyar</option>
 				</select>
@@ -67,8 +67,9 @@ $uninstall = $lang['uninstall'];
 			</form>
 			
 		</div>
+		</div>
 		<div class="col-md-5" id="resultDisplay">
-
+			
 			
 		</div>
 		<div class="col-sm-1"></div>

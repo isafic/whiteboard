@@ -13,7 +13,7 @@ $lang['close'] = "Close";
 $lang['confirm'] = "Confirm";
 $lang['back'] = "Back";
 	
-$lang['pleaseInstall'] = "Please install the website first!";
+$lang['pleaseInstall'] = "<a href='./install'>Please install the website first!</a>";
 
 $lang['addIncomingHeader'] = "Add Incoming";
 $lang['editHeader'] = "Edit";
@@ -36,7 +36,7 @@ $lang['moveTo3'] = "Move To Finished";
 
 $lang['settings'] = "Settings";
 $lang['lang'] = "Language";
-$lang['uninstall'] = "Uninstall?";
+$lang['uninstall'] = "Uninstall? (Permanent!)";
 
 // install
 
@@ -48,6 +48,27 @@ $lang['password'] = "Password";
 $lang['database'] = "Database";
 $lang['ifDb'] = "If the database does not already exist, it will be created.";
 $lang['login'] = "Login";
+
+// install.php
+
+$lang['installSuccess'] = "Whiteboard was installed successfully! Feel free to delete the /install/ folder.<br><a href='../'>Click here to return to the main page.</a>";
+$lang['connectSuccess'] = "Connected successfully! <br>";
+$lang['dbCreated'] = "Database created.<br>";
+$lang['dbExists'] = "Database alrady exists.<br>";
+$lang['tableExists'] = "Table exists.<br>";
+$lang['tableReset'] = "Table reset successfully. <br>";
+$lang['tableNotReset'] = "Table was not reset successfully. Please try again. <br>";
+$lang['tableCreated'] = "Table was created successfully.  <br>";
+$lang['tableNotCreated'] = "Table was not created successfully. Please try again. : ";
+$lang['notConnected'] = "<br>Could not connect successfully. Please check that your login information is correct.";
+
+
+
+
+
+
+
+$lang['test'] = "FULLY AUTOMATED LUXURY GAY SPACE ANARCHY";
 
 
 

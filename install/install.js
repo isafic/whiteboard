@@ -36,5 +36,12 @@ function submitLogin() {
 	);
 } 
 
+var settingsPhp = "../settings/settings.php";
+function changeLang() {
+	var lang = $("#lang").val();
+	$.post(settingsPhp, { lang: lang, uninstall: "false"});
+	location.reload();
+}
+
 
 

@@ -13,7 +13,7 @@ $lang['close'] = "Zárás";
 $lang['confirm'] = "Elfogadás";
 $lang['back'] = "Vissza";
 	
-$lang['pleaseInstall'] = "Legyen szives a website-ot előbb installálni!";
+$lang['pleaseInstall'] = "<a href='./install'>Legyen szives a website-ot előbb installálni!</a>";
 
 $lang['addIncomingHeader'] = "Létrehozás";
 $lang['editHeader'] = "Szerkesztés";
@@ -36,7 +36,7 @@ $lang['moveTo3'] = "Mozgatás Készen Lévő Állapotra";
 
 $lang['settings'] = "Beállítások";
 $lang['lang'] = "Nyelv";
-$lang['uninstall'] = "Eltávolítás?";
+$lang['uninstall'] = "Eltávolítás? (Végleges!)";
 
 // install
 
@@ -48,5 +48,20 @@ $lang['password'] = "Jelszó";
 $lang['database'] = "Adazbázis";
 $lang['ifDb'] = "Ha az adatbázis még nem létezik, akkor a program megcsinálja.";
 $lang['login'] = "Bejelentkezés";
+
+// install.php
+
+$lang['installSuccess'] = "A program sikeresen települt. Szívesen kitörölheti az /install/ mappát.<br><a href='../'>Kattintson ide hogy visszatérjen a főoldalra.</a>";
+$lang['connectSuccess'] = "Sikeresen csatlakozott! <br>";
+$lang['dbCreated'] = "Adatbázis megcsinálva.<br>";
+$lang['dbExists'] = "Az adott adatbázis már létezik.<br>";
+$lang['tableExists'] = "Az asztal már létezik.<br>";
+$lang['tableReset'] = "Az asztal sikeresen visszaállítva.<br>";
+$lang['tableNotReset'] = "Az asztal nem volt sikeresen visszaállítva. Kérem próbalkozzon újra.<br>";
+$lang['tableCreated'] = "Asztal sikeresen megcsinálva. <br>";
+$lang['tableNotCreated'] = "Az asztal nem volt sikeresen megcsinálva. Kérem próbalkozzon újra. : ";
+$lang['notConnected'] = "<br>A sikeres kapcsolat nem jött össze. Legyen szives bisztosítsa azt, hogy a belépő informácio hejesen volt beírva.";
+
+$lang['test'] = "HUHUHUHUN";
 
 ?>

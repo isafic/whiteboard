@@ -52,9 +52,9 @@ if ($config['settings']['lang'] == "en") {
 		<form id = "sql-data">
 			<div class="form-group">
 				<label for="lang"><?php echo $lang['lang']; ?></label>
-				<select id="lang" class="form-control">
-					<option value="en">English</option>
-					<option value="hu">Magyar</option>
+				<select id="lang" class="form-control" onchange="changeLang();">
+					<option value="en" <?php if ($LANG == "en") { echo 'selected = "selected"'; } ?> >English</option>
+					<option value="hu" <?php if ($LANG == "hu") { echo 'selected = "selected"'; } ?>>Magyar</option>
 				</select>
 			</div>
 

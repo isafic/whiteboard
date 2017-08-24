@@ -7,6 +7,8 @@ $uninstall = $_POST['uninstall'];
 $configFile = dirname( dirname(__FILE__) ).'/config.ini';
 $config = parse_ini_file($configFile, true);
 
+
+
 $host = $config['database']['host'] ;
 $user = $config['database']['user'] ;
 $pass = $config['database']['pass']  ;
@@ -68,6 +70,19 @@ function write_ini_file($assoc_arr, $path, $has_sections=FALSE) {
 }
 
 
+function removeTable() {
+    global $host;
+    global $user;
+    global $pass;
+    global $dbname;
+    $conn = mysqli_connect($host, $user, $pass, $dbname); 
+    $sql = "DROP TABLE whiteboard_data";
+    if ($conn) {
+        mysqli_query($conn, $sql);
+    }
+
+}
+
 
 if ($uninstall != "true"){
 write_ini_file($loginInfo, $configFile, true);}
@@ -83,8 +98,13 @@ $loginInfo = array(
             'settings' => array(
                 'lang' => $lang)
 
+
 ); 
-write_ini_file($loginInfo, $configFile, true);}
+write_ini_file($loginInfo, $configFile, true);
+removeTable();
+// echo "The program has been uninstalled and the database table removed.";
+// echo $lang['test'];
+}
 
 // write_ini_file($loginInfo, $configFile, true);}
 

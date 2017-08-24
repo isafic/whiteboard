@@ -6,7 +6,7 @@ $user = $_POST['user'];
 $pass = $_POST['pass'];  
 $dbname = "'".$_POST['db']."'";  
 $db = $_POST['db'];
-$lang = $_POST['lang'];
+$language = $_POST['lang'];
 
 $_SESSION['host'] = $host;
 $_SESSION['user'] = $user;
@@ -26,10 +26,19 @@ $loginInfo = array(
 				'install' => array(
 					'is_installed' => true),
 				'settings' => array(
-					'lang' => $lang,)
+					'lang' => $language,)
 	);
 
 $configFile = dirname( dirname(__FILE__) ).'/config.ini';
+$config = parse_ini_file($configFile, true);
+
+if ($config['settings']['lang'] == "en") {
+	include dirname( dirname(__FILE__) )."/lang/en.php";
+	$LANG = "en";
+} elseif ($config['settings']['lang'] == "hu") {
+	include dirname( dirname(__FILE__) )."/lang/hu.php";
+	$LANG = "hu";
+}
 
 function write_ini_file($assoc_arr, $path, $has_sections=FALSE) { 
     $content = ""; 
@@ -77,18 +86,20 @@ function write_ini_file($assoc_arr, $path, $has_sections=FALSE) {
 function suc(){
 	global $loginInfo;
 	global $configFile;
+	global $lang;
 	write_ini_file($loginInfo, $configFile, true);
-	echo "Whiteboard was installed successfully! Feel free to delete the /install/ folder.";
+	echo $lang['installSuccess'];
+	
 }
 
 
 
 if ($conn){
-	echo "Connected successfully! <br>";
+	echo $lang['connectSuccess'];
 	if (mysqli_query($conn, "CREATE DATABASE IF NOT EXISTS ".$db."")){
-		echo "Database created.<br>";
+		echo $lang['dbCreated'];
 	} else {
-		echo "Database alrady exists.<br>";
+		echo $lang['dbExists'];
 	}
 	
 	mysqli_select_db($conn, $db);
@@ -98,26 +109,26 @@ if ($conn){
 
 	if ($query_result !== FALSE)
 	{
-	  echo "Table exists.<br>";
+	  echo $lang['tableExists'];
 	  if (mysqli_query($conn, "TRUNCATE TABLE whiteboard_data")){
-			echo "Table reset successfully. <br>";
+			echo $lang['tableReset'];
 			suc();
 		} else{
-			echo "Table was not reset successfully. Please try again. <br>";
+			echo $lang['tableNotReset'];
 		}
 	} else
 	{
 		$sql = "CREATE TABLE whiteboard_data (id INT AUTO_INCREMENT,title VARCHAR(40) NOT NULL,description TEXT,owner VARCHAR(20),status TINYINT,primary key (id))";
 		if (mysqli_query($conn, $sql)){
-			echo "Table was created successfully.  <br>";
+			echo $lang['tableCreated'];
 			suc();
 		} else {
-			echo "Table was not created successfully. Please try again. : " .mysqli_error($conn);
+			echo $lang['tableNotCreated'].mysqli_error($conn);
 		}
 	}
 	
 } else {
-	echo "<br>Could not connect successfully. Please check that your login information is correct.";
+	echo $lang['notConnected'];
 }
 
 ?>
