@@ -27,6 +27,8 @@ if ($config['install']['is_installed'] != 1){
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="functions/interactWithDatabase.js"></script>
+		<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=nr50678forbmek6dp84s8tux5o1uhtxap0n9bis90n5kgfup"></script>
+  	<script>tinymce.init({ selector:'textarea' });</script>
 	<?php 
 		require "functions/panels.php";
 		fetchData();

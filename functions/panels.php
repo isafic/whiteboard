@@ -73,17 +73,14 @@ function fetchData(){
        echo("Error description: " . mysqli_error($conn)); 
     }  
     mysqli_close($conn);  
+    // var_dump($entry);
 }
-
+// echo $entry;
 function drawIncomingBox($ident) {
 	global $entry;
+	// var_dump($entry);
+	// var_dump($entry[$ident]['title']);
 	global $lang;
-
-	$viewTitle = $entry[$ident]['title'];
-	$viewDescription = $entry[$ident]['description'];
-	$viewOwner = $entry[$ident]['owner'];
-	$owner = $lang['drawOwner'] . $viewOwner;
-
 	global $viewTitle;
 	global $viewDescription;
 	global $viewOwner;
@@ -103,6 +100,10 @@ function drawIncomingBox($ident) {
 	global $moveTo3;
 
 
+	$viewTitle = $entry[$ident]['title'];
+	$viewDescription = $entry[$ident]['description'];
+	$viewOwner = $entry[$ident]['owner'];
+	$owner = $lang['drawOwner'] . $viewOwner;
 
 
 	$incomingBox = 
@@ -153,13 +154,16 @@ function drawIncomingBox($ident) {
 								        <h4 class="modal-title">$viewEntry</h4>
 			      					</div>
 			      					
-				      				<div class="modal-body">
-				      					
-				        				<h3 align="left">$viewTitle</h3>
-				        				<h5 align="left">$owner</h5>
-				        				
+				      				<div class="modal-body" style="text-align: left;">
+				      					<div class="panel panel-default">
+				        				<h3 align="left" style="padding: 10px;">$viewTitle</h3>
+				        				</div>
+				        				<div class="panel panel-default">
+				        				<h5 align="left" style="padding: 10px;">$owner</h5>
+				        				</div>
+				        				<div class="panel panel-default" style="padding: 10px;">
 				        				<p align="left">$viewDescription</p>
-				        								
+				        				</div>
 				      				</div>
 
 				      				<div class="modal-footer">
@@ -230,11 +234,6 @@ echo "$incomingBox";
 function drawWaitingBox($ident) {
 	global $entry;
 	global $lang;
-
-	$viewTitle = $entry[$ident]['title'];
-	$viewDescription = $entry[$ident]['description'];
-	$viewOwner = $entry[$ident]['owner'];
-	$owner = $lang['drawOwner'] . $viewOwner;
 	
 	global $viewTitle;
 	global $viewDescription;
@@ -253,6 +252,11 @@ function drawWaitingBox($ident) {
 	global $moveTo1;
 	global $moveTo2;
 	global $moveTo3;
+
+	$viewTitle = $entry[$ident]['title'];
+	$viewDescription = $entry[$ident]['description'];
+	$viewOwner = $entry[$ident]['owner'];
+	$owner = $lang['drawOwner'] . $viewOwner;
 
 	$waitingBox = 
 	<<<HTML
@@ -301,12 +305,16 @@ function drawWaitingBox($ident) {
 								        <h4 class="modal-title">$viewEntry</h4>
 			      					</div>
 			      					
-				      				<div class="modal-body">
-				      					
-				        				<h3 align="left">$viewTitle</h3>
-										<h5 align="left">$owner</h5>
+				      			<div class="modal-body" style="text-align: left;">
+				      					<div class="panel panel-default">
+				        				<h3 align="left" style="padding: 10px;">$viewTitle</h3>
+				        				</div>
+				        				<div class="panel panel-default">
+				        				<h5 align="left" style="padding: 10px;">$owner</h5>
+				        				</div>
+				        				<div class="panel panel-default" style="padding: 10px;">
 				        				<p align="left">$viewDescription</p>
-				        								
+				        				</div>
 				      				</div>
 
 				      				<div class="modal-footer">
@@ -378,11 +386,6 @@ function drawOngoingBox($ident) {
 	global $entry;
 	global $lang;
 
-	$viewTitle = $entry[$ident]['title'];
-	$viewDescription = $entry[$ident]['description'];
-	$viewOwner = $entry[$ident]['owner'];
-	$owner = $lang['drawOwner'] . $viewOwner;
-	
 	global $viewTitle;
 	global $viewDescription;
 	global $viewOwner;
@@ -400,6 +403,12 @@ function drawOngoingBox($ident) {
 	global $moveTo1;
 	global $moveTo2;
 	global $moveTo3;
+
+	$viewTitle = $entry[$ident]['title'];
+	$viewDescription = $entry[$ident]['description'];
+	$viewOwner = $entry[$ident]['owner'];
+	$owner = $lang['drawOwner'] . $viewOwner;
+	
 
 	$ongoingBox = 
 	<<<HTML
@@ -448,12 +457,16 @@ function drawOngoingBox($ident) {
 								        <h4 class="modal-title">$viewEntry</h4>
 			      					</div>
 			      					
-				      				<div class="modal-body">
-				      					
-				        				<h3 align="left">$viewTitle</h3>
-				        				<h5 align="left">$owner</h5>
+				      			<div class="modal-body" style="text-align: left;">
+				      					<div class="panel panel-default">
+				        				<h3 align="left" style="padding: 10px;">$viewTitle</h3>
+				        				</div>
+				        				<div class="panel panel-default">
+				        				<h5 align="left" style="padding: 10px;">$owner</h5>
+				        				</div>
+				        				<div class="panel panel-default" style="padding: 10px;">
 				        				<p align="left">$viewDescription</p>
-				        								
+				        				</div>
 				      				</div>
 
 				      				<div class="modal-footer">
@@ -525,10 +538,6 @@ function drawFinishedBox($ident) {
 	global $entry;
 	global $lang;
 
-	$viewTitle = $entry[$ident]['title'];
-	$viewDescription = $entry[$ident]['description'];
-	$viewOwner = $entry[$ident]['owner'];
-	$owner = $lang['drawOwner'] . $viewOwner;
 	
 	global $viewTitle;
 	global $viewDescription;
@@ -547,6 +556,11 @@ function drawFinishedBox($ident) {
 	global $moveTo1;
 	global $moveTo2;
 	global $moveTo3;
+	
+	$viewTitle = $entry[$ident]['title'];
+	$viewDescription = $entry[$ident]['description'];
+	$viewOwner = $entry[$ident]['owner'];
+	$owner = $lang['drawOwner'] . $viewOwner;
 
 	$finishedBox = 
 	<<<HTML
@@ -566,12 +580,16 @@ function drawFinishedBox($ident) {
 								        <h4 class="modal-title">$viewEntry</h4>
 			      					</div>
 			      					
-				      				<div class="modal-body">
-				      					
-				        				<h3 align="left">$viewTitle</h3>
-				        				<h5 align="left">$owner</h5>
+				      				<div class="modal-body" style="text-align: left;">
+				      					<div class="panel panel-default">
+				        				<h3 align="left" style="padding: 10px;">$viewTitle</h3>
+				        				</div>
+				        				<div class="panel panel-default">
+				        				<h5 align="left" style="padding: 10px;">$owner</h5>
+				        				</div>
+				        				<div class="panel panel-default" style="padding: 10px;">
 				        				<p align="left">$viewDescription</p>
-				        								
+				        				</div>
 				      				</div>
 
 				      				<div class="modal-footer">

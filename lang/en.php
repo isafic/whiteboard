@@ -36,7 +36,7 @@ $lang['moveTo3'] = "Move To Finished";
 
 $lang['settings'] = "Settings";
 $lang['lang'] = "Language";
-$lang['uninstall'] = "Uninstall? (Permanent!)";
+$lang['uninstall'] = "Uninstall?";
 
 // install
 
@@ -48,6 +48,10 @@ $lang['password'] = "Password";
 $lang['database'] = "Database";
 $lang['ifDb'] = "If the database does not already exist, it will be created.";
 $lang['login'] = "Login";
+
+$lang['yes'] = "Yes";
+
+$lang['pleaseConfirm'] = "This will delete the database table and reset your settings. Are you sure?";
 
 // install.php
 

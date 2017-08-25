@@ -41,7 +41,7 @@ $cancel = $lang['cancel'];
 				        </div>
 
 				        <div class="modal-footer">
-					        <button type="button" class="btn btn-success" onclick="SubmitFormData();window.location.reload();" data-dismiss="modal"><?php echo $save; ?></button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
+					        <button type="button" class="btn btn-success" onclick="SubmitFormData();location.reload();" data-dismiss="modal"><?php echo $save; ?></button><!-- onclick="SubmitFormData();" data-dismiss="modal" -->
 
 					        <button type="button" class="btn btn-danger" data-dismiss="modal"><?php echo $cancel; ?></button>
 					    </form>

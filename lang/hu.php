@@ -12,7 +12,9 @@ $lang['cancel'] = "Mégsem";
 $lang['close'] = "Zárás";
 $lang['confirm'] = "Elfogadás";
 $lang['back'] = "Vissza";
-	
+
+$lang['yes'] = "Igen";
+
 $lang['pleaseInstall'] = "<a href='./install'>Legyen szives a website-ot előbb installálni!</a>";
 
 $lang['addIncomingHeader'] = "Létrehozás";
@@ -36,7 +38,7 @@ $lang['moveTo3'] = "Mozgatás Készen Lévő Állapotra";
 
 $lang['settings'] = "Beállítások";
 $lang['lang'] = "Nyelv";
-$lang['uninstall'] = "Eltávolítás? (Végleges!)";
+$lang['uninstall'] = "Eltávolítás?";
 
 // install
 
@@ -48,6 +50,10 @@ $lang['password'] = "Jelszó";
 $lang['database'] = "Adazbázis";
 $lang['ifDb'] = "Ha az adatbázis még nem létezik, akkor a program megcsinálja.";
 $lang['login'] = "Bejelentkezés";
+
+
+$lang['pleaseConfirm'] = "Ez ki fogja törölni az adatbázis asztalt és a beállításokat is. Bisztos benne?";
+
 
 // install.php
 

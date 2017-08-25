@@ -16,8 +16,17 @@ $language = $lang['lang'];
 $save = $lang['save'];
 $back = $lang['back'];
 $uninstall = $lang['uninstall'];
+$pleaseConfirm = $lang['pleaseConfirm'];
+$yes = $lang['yes'];
+
 
 ?>
+<script type="text/javascript">
+	<?php echo "var back = '{$back}';"; ?>
+	<?php echo "var pleaseConfirm = '{$pleaseConfirm}';"; ?>
+	<?php echo "var uninstall = '{$uninstall}';"; ?>
+	<?php echo "var yes = '{$yes}';"; ?>
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +40,7 @@ $uninstall = $lang['uninstall'];
 	<script src="../functions/interactWithDatabase.js"></script>
 	<script src="settings.js"></script>
 
+
 </head>
 <body>
 <div class="container">
@@ -40,7 +50,7 @@ $uninstall = $lang['uninstall'];
 
 	<div class="row">
 		<div class="col-sm-1"></div>
-		<div class="col-md-5">
+		<div class="col-md-8">
 	
 		<form id = "settings">
 			<div class="form-group">
@@ -52,7 +62,7 @@ $uninstall = $lang['uninstall'];
 			</div>
 
 			<div class="form-group">
-				<label for="uninstall"><?php echo $uninstall; ?></label>
+				<label for="uninstall" id="uninstall-label"><?php echo $uninstall; ?></label>
 				
 				<input type='checkbox' id='uninstall' value='1'>
 			</div>
@@ -60,15 +70,15 @@ $uninstall = $lang['uninstall'];
 			<div class="text-center">
 			<br>
 
-			<button type="button" id="submitButton" class="btn btn-success btn-lg" onclick="submitSettings();" ><?php echo $save; ?></button>
-			<a type="button" id="submitButton" class="btn btn-danger btn-lg" href="../" ><?php echo $back; ?></a>
+			<!-- <button type="button" id="submitButton" class="btn btn-success btn-lg" onclick="submitSettings();" style="display: none;"><?php echo $save; ?></button> -->
+			<a type="button" id="button" class="btn btn-primary btn-lg" href="../" ><?php echo $back; ?></a>
 
 			
 			</form>
 			
 		</div>
 		</div>
-		<div class="col-md-5" id="resultDisplay">
+		<div class="col-md-2" id="resultDisplay">
 			
 			
 		</div>
