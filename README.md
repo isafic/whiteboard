@@ -39,3 +39,4 @@ Currently, there is no user-registration/account system to anyone accessing the 
 * Make whiteboards accessable by name and password (user accounts)
 * Image support
 * Modal simplification (less modals written)
+* Improve user interface
