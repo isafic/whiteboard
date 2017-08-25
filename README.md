@@ -12,6 +12,7 @@ Currently, there is no user-registration/account system to anyone accessing the 
 
 * Add new tasks to the *Incoming* section by clicking the '+' button and filling out the form. 
 * Existing entries can be edited using the yellow edit button and viewed using the blue eye button.
+* All text has HTML markup support
 * Clicking the red X button delete the entry from the database.
 * The green checkmark button will move the entry into the next category (i.e. *Waiting* -> *Ongoing*)
 
