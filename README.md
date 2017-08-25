@@ -34,7 +34,8 @@ Currently, there is no user-registration/account system to anyone accessing the 
 * ~~Give entries an "owner" property~~
 * ~~Work out some localisation system that isn't just an entirely seperate copy of the program in a different language~~
 * ~~Add a settings page where you can change the language easily~~
+* Markdown support
 * Add functionality for multiple "whiteboards" in the same database
 * Make whiteboards accessable by name and password (user accounts)
-* Markdown support
 * Image support
+* Modal simplification (less modals written)
